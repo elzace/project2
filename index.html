@@ -1,0 +1,611 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel='stylesheet' type='text/css' href='style/bar.css'>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+//----------------area-a-rolling---------------//
+var now=0;
+var timer=null;
+function next(){
+	$(document).ready(function() {
+		var i=$('#rolling li').length-1	
+		if(now<i){
+		$('#rolling ul').animate({left:'-=451px'},'fast')
+		now++;
+		}
+		else{
+		$('#rolling ul').animate({left:'0px'},'fast')
+		now=0;
+		}
+		$('#dot a').removeClass('active')
+		$('#dot a').eq(now).addClass('active')
+	});
+}
+
+
+timer=setInterval(next,4000)
+
+$(document).ready(function() {
+	$('#rolling').mouseover(function(){
+		clearInterval(timer)
+    })
+	$('#rolling').mouseout(function(){
+		timer=setInterval(next,4000)
+	}) 
+	$('#dot a').click(function(){
+		$('#dot a').removeClass('active');
+		$(this).addClass('active');	
+		now=$(this).attr('act-num')	
+		var nowLeft=now*(-451)+'px'
+		$('#rolling ul').animate({left:nowLeft},'fast')
+	})
+});
+
+//-------------------area-b-week---------//
+$(document).ready(function(){
+	$('#week .w').click(function(){
+		$('#week .w').removeClass('active');
+		$(this).addClass('active');
+		//----周一~周日-----切换
+		var i=$(this).attr('data-i');
+		$('#area-b .pageA .list').removeClass('active');
+		$('#area-b .pageA .list').eq(i).addClass('active')
+		$('#area-b .pageB .list').removeClass('active');
+		$('#area-b .pageB .list').eq(i).addClass('active')
+		i=$(this).attr('data-i');
+		})
+	})
+//---------area-b-banner---------------//
+$(document).ready(function() {
+    $('#area-b .banner .type').click(function(){
+		$('#area-b .banner .type').removeClass('active')
+		$(this).addClass('active')
+		var i=$(this).attr('data-i')
+		if(i==0){
+			$('#area-b .page').removeClass('active')
+			$('#area-b .pageA').addClass('active')
+			i=$(this).attr('data-i')
+			}
+		else{
+			$('#area-b .page').removeClass('active')
+			$('#area-b .pageB').addClass('active')
+			i=$(this).attr('data-i')
+			}
+		})
+});
+
+</script>
+</head>
+
+<body>
+<div id="mainBody">
+    <div id="banner">
+    </div>
+    <div id="bar">
+      <div class="inner">
+        <div class="l">
+            <a href="/" title="I Love Acfun" class="current">首页</a>
+            <a href="#" class="">动画</a>
+            <a href="#" >音乐</a>
+            <a href="#" >舞蹈</a>
+            <a href="#" >游戏</a>
+            <a href="#" >娱乐</a>
+            <a href="#" >科技</a>
+            <a href="#" >影视</a>
+            <a href="#" >体育</a>
+            <a href="#" >文章</a>
+            <a href="#" >合集</a>
+            <a href="#" >更多</a>
+        </div>
+        <div class="s">
+         <form id="search" target="_blank" method="get" action="/">
+         <input class="txt-search" type="text"  placeholder="请搜索" autocomplete="off"/>
+         <input class="btn-search" type="submit" value="搜 索"/>
+         </form>
+        </div>
+         <span class="clearfix"></span>
+      </div>  
+    </div>
+    <div id="area-a">
+    	<div class="l">
+            <div id="rolling">
+             <ul>
+                <li><a href="#"><img src="image/a.jpg" /></a></li>
+                <li><a href="#"><img src="image/b.jpg" /></a></li>
+                <li><a href="#"><img src="image/c.jpg" /></a></li>
+                <li><a href="#"><img src="image/d.jpg" /></a></li>
+                <li><a href="#"><img src="image/e.jpg" /></a></li>
+             </ul>
+             <div class="bottom-mask"></div>
+             <div id="dot">
+                <a class="active" act-num="0"></a>
+                <a act-num="1"></a>
+                <a act-num="2"></a>
+                <a act-num="3"></a>
+                <a act-num="4"></a>
+             </div>
+            </div>
+            <div id="right-box">
+                <a class="preview"><img src="image/1.gif" class="prevImg" />
+                    <div class="maskA">
+                        <p class="title">盘点动漫里的激情燃斗对决（第四期）</p>
+                    </div>
+                </a>
+                <a class="preview"><img src="image/4.jpg" class="prevImg" />
+                    <div class="maskA">
+                        <p class="title">【有画快说】第一季第6期</p>
+                    </div>
+                </a>
+                <a class="preview"><img src="image/3.jpg" class="prevImg"/>
+                    <div class="maskA">
+                        <p class="title">【游戏】古墓丽影合集</p>
+                    </div>
+                </a>
+                <a class="preview"><img src="image/2.jpg" class="prevImg" />
+                    <div class="maskA">
+                        <p class="title">【MV】return to the land</p>
+                    </div>
+                </a>
+            </div>
+            <div id="bot-box">
+                <a class="preview">
+                	<img src="image/25145214t7frccnn.jpg" class="prevImg" />
+                    <div class="maskA">
+                        <p class="title">Let Her Gp-Jannine Weigel</p>
+                    </div>
+                </a>
+                <a class="preview">
+                	<img src="image/24231036utw8laiy.jpg" class="prevImg" />
+                    <div class="maskA">
+                        <p class="title">【暴走大事件第四季】25暴漫发布《尿了么》app</p>
+                    </div>
+                </a>
+                <a class="preview">
+                	<img src="image/25052106offw2jcz.jpg" class="prevImg"/>
+                    <div class="maskA">
+                        <p class="title">【逗鱼时刻】第55期  最强！华丽！青眼の究极龙</p>
+                    </div>
+                </a>
+                <a class="preview">
+                	<img src="image/24104139979ecg0z.gif" class="prevImg" />
+                    <div class="maskA">
+                        <p class="title">国外妹子演绎FF系列经典BGM</p>
+                    </div>
+                </a>
+            </div>
+            <span class="clearfix"></span>
+        </div>
+        <div class="r">
+			<div id="long-box">
+            	<a href="#" class="one">
+                    <img src="image/long1.jpg" />
+                    <div class="maskA">
+                        <p class="title">口袋妖怪漆黑魅影 第六期</p>
+                    </div>
+                </a>
+                <a href="#" class="two">
+                    <img src="image/e.jpg" />
+                    <div class="maskA">
+                        <p class="title">Steam销售周榜</p>
+                    </div>         
+                </a>           
+            </div>
+        </div>
+        <span class="clearfix"></span> 
+    </div>
+    <div id="area-b">
+    	<div class="l">
+        	<div class="banner">
+            	<a href="#" class="ch">
+                	<h3>新 番</h3>
+                </a>
+                <a data-i="0" class="type type1 active">动画</a>
+                <a data-i="1" class="type">剧集</a>
+            </div>
+            <div class="mainer">
+            	<div class="l">
+                	<ul id="week" class='filter'>
+                    	<li data-i="0" class="w w-0 active">最近更新</li>
+                        <li data-i="1" class="w w-1">周 一</li>
+                        <li data-i="2" class="w w-2">周 二</li>
+                        <li data-i="3" class="w w-3">周 三</li>
+                        <li data-i="4" class="w w-4">周 四</li>
+                        <li data-i="5" class="w w-5">周 五</li>
+                        <li data-i="6" class="w w-6">周 六</li>
+                        <li data-i="7" class="w w-7">周 日</li>
+                    </ul>
+                </div>
+                <div class="r">
+					<div class="page pageA active">
+                    	<div class="list active">
+                        	<div class="unit unit0">
+                            	<a class="preview" href="#">
+                                	<img src="image/mon.jpg" class="prevImg" />
+                        			<p class="maskA info">Monday</p>
+                				</a>
+                            </div>
+                            <div class="unit unit1">
+                            	<a class="preview" href="#">
+                                	<img src="image/tue.jpg" class="prevImg" />
+                        			<p class="maskA info">Tuesday</p>
+                				</a>
+                            </div>
+                            <div class="unit unit2">
+                            	<a class="preview" href="#">
+                                	<img src="image/wed.jpg" class="prevImg" />
+                        			<p class="maskA info">Wednsday</p>
+                				</a>
+                            </div>
+                            <div class="unit unit3">
+                            	<a class="preview" href="#">
+                                	<img src="image/thu.jpg" class="prevImg" />
+                        			<p class="maskA info">Thursday</p>
+                				</a>
+                            </div>
+                            <div class="unit unit4">
+                            	<a class="preview" href="#">
+                                	<img src="image/fri.jpg" class="prevImg" />
+                        			<p class="maskA info">Friday</p>
+                				</a>
+                            </div>
+                            <div class="unit unit5">
+                            	<a class="preview" href="#">
+                                	<img src="image/sat.jpg" class="prevImg" />
+                        			<p class="maskA info">Saturday</p>
+                				</a>
+                            </div>
+                            <div class="unit unit6">
+                            	<a class="preview" href="#">
+                                	<img src="image/Sun.jpg" class="prevImg" />
+                        			<p class="maskA">Sunday</p>
+                				</a>
+                            </div>
+                            <span class="clearfix"></span>
+                        </div>
+                        <div class="list">
+                            <div class="unit unit0">
+                            	<a class="preview" href="#">
+                                	<img src="image/mon.jpg" class="prevImg" />
+                        			<p class="maskA info">Monday</p>
+                				</a>
+                            </div>
+                             <div class="unit unit0">
+                            	<a class="preview" href="#">
+                                	<img src="image/mon.jpg" class="prevImg" />
+                        			<p class="maskA info">Monday</p>
+                				</a>
+                            </div>
+                            <div class="unit unit0">
+                            	<a class="preview" href="#">
+                                	<img src="image/mon.jpg" class="prevImg" />
+                        			<p class="maskA info">Monday</p>
+                				</a>
+                            </div>
+                            <span class="clearfix"></span>
+                        </div>
+                        <div class="list">
+                            <div class="unit unit1">
+                            	<a class="preview" href="#">
+                                	<img src="image/tue.jpg" class="prevImg" />
+                        			<p class="maskA info">Tusday</p>
+                				</a>
+                            </div>
+                             <div class="unit unit2">
+                            	<a class="preview" href="#">
+                                	<img src="image/tue.jpg" class="prevImg" />
+                        			<p class="maskA info">Tusday</p>
+                				</a>
+                            </div>
+                            <div class="unit unit3">
+                            	<a class="preview" href="#">
+                                	<img src="image/tue.jpg" class="prevImg" />
+                        			<p class="maskA info">Tusday</p>
+                				</a>
+                            </div>
+                            <span class="clearfix"></span>
+                        </div>
+                        <div class="list">
+                            <div class="unit unit1">
+                            	<a class="preview" href="#">
+                                	<img src="image/wed.jpg" class="prevImg" />
+                        			<p class="maskA info">Wednsday</p>
+                				</a>
+                            </div>
+                             <div class="unit unit2">
+                            	<a class="preview" href="#">
+                                	<img src="image/wed.jpg" class="prevImg" />
+                        			<p class="maskA info">Wednsday</p>
+                				</a>
+                            </div>
+                            <div class="unit unit3">
+                            	<a class="preview" href="#">
+                                	<img src="image/wed.jpg" class="prevImg" />
+                        			<p class="maskA info">Wednsday</p>
+                				</a>
+                            </div>
+                            <span class="clearfix"></span>
+                        </div>
+                        <div class="list">
+                            <div class="unit unit1">
+                            	<a class="preview" href="#">
+                                	<img src="image/thu.jpg" class="prevImg" />
+                        			<p class="maskA info">Thursday</p>
+                				</a>
+                            </div>
+                             <div class="unit unit2">
+                            	<a class="preview" href="#">
+                                	<img src="image/thu.jpg" class="prevImg" />
+                        			<p class="maskA info">Thursday</p>
+                				</a>
+                            </div>
+                            <div class="unit unit3">
+                            	<a class="preview" href="#">
+                                	<img src="image/thu.jpg" class="prevImg" />
+                        			<p class="maskA info">Thursday</p>
+                				</a>
+                            </div>
+                            <span class="clearfix"></span>
+                        </div>                       
+                        <div class="list">
+                            <div class="unit unit1">
+                            	<a class="preview" href="#">
+                                	<img src="image/fri.jpg" class="prevImg" />
+                        			<p class="maskA info">Friday</p>
+                				</a>
+                            </div>
+                             <div class="unit unit2">
+                            	<a class="preview" href="#">
+                                	<img src="image/fri.jpg" class="prevImg" />
+                        			<p class="maskA info">Friday</p>
+                				</a>
+                            </div>
+                            <div class="unit unit3">
+                            	<a class="preview" href="#">
+                                	<img src="image/fri.jpg" class="prevImg" />
+                        			<p class="maskA info">Friday</p>
+                				</a>
+                            </div>
+                            <span class="clearfix"></span>
+                        </div>
+                        
+                        <div class="list">
+                            <div class="unit unit1">
+                            	<a class="preview" href="#">
+                                	<img src="image/sat.jpg" class="prevImg" />
+                        			<p class="maskA info">Saturday</p>
+                				</a>
+                            </div>
+                             <div class="unit unit2">
+                            	<a class="preview" href="#">
+                                	<img src="image/sat.jpg" class="prevImg" />
+                        			<p class="maskA info">Saturday</p>
+                				</a>
+                            </div>
+                            <div class="unit unit3">
+                            	<a class="preview" href="#">
+                                	<img src="image/sat.jpg" class="prevImg" />
+                        			<p class="maskA info">Saturday</p>
+                				</a>
+                            </div>
+                            <span class="clearfix"></span>
+                        </div>                      
+                        <div class="list">
+                            <div class="unit unit1">
+                            	<a class="preview" href="#">
+                                	<img src="image/sun.jpg" class="prevImg" />
+                        			<p class="maskA info">Sunday</p>
+                				</a>
+                            </div>
+                             <div class="unit unit2">
+                            	<a class="preview" href="#">
+                                	<img src="image/sun.jpg" class="prevImg" />
+                        			<p class="maskA info">Sunday</p>
+                				</a>
+                            </div>
+                            <div class="unit unit3">
+                            	<a class="preview" href="#">
+                                	<img src="image/sun.jpg" class="prevImg" />
+                        			<p class="maskA info">Sunday</p>
+                				</a>
+                            </div>
+                            <span class="clearfix"></span>
+                        </div>                        
+                    </div>
+                    <div class="page pageB">
+                    	<div class="list active">
+                        	<div class="unit unit0">
+                            	<a class="preview" href="#">
+                                	<img src="image/juji1.jpg" class="prevImg" />
+                                    <p class="maskA info">哥谭 第三季</p>
+                                </a>
+                            </div>
+                            <div class="unit unit1">
+                            	<a class="preview" href="#">
+                                	<img src="image/juji2.jpg" class="prevImg" />
+                                    <p class="maskA info">闪电侠 第二季</p>
+                                </a>
+                            </div>
+                            <div class="unit unit2">
+                            	<a class="preview" href="#">
+                                	<img src="image/juji3.jpg" class="prevImg" />
+                                    <p class="maskA info">我是僵尸 第二季</p>
+                                </a>
+                            </div>
+                            <div class="unit unit3">
+                            	<a class="preview" href="#">
+                                	<img src="image/juji4.jpg" class="prevImg" />
+                                    <p class="maskA info">朝5晚9 恋上我的帅和尚</p>
+                                </a>
+                            </div>
+                            <div class="unit unit4">
+                            	<a class="preview" href="#">
+                                	<img src="image/juji5.jpg" class="prevImg" />
+                                    <p class="maskA info">神盾局特工</p>
+                                </a>
+                            </div>
+                          	<div class="unit unit5">
+                            	<a class="preview" href="#">
+                                	<img src="image/juji6.jpg" class="prevImg" />
+                                    <p class="maskA info">女超人 第一季</p>
+                                </a>
+                            </div>
+                          	<div class="unit unit6">
+                            	<a class="preview" href="#">
+                                	<img src="image/juji7.jpg" class="prevImg" />
+                                    <p class="maskA info">荒原 第一季</p>
+                                </a>
+                            </div>
+                            <span class="clearfix"></span>
+                        </div>
+                        
+                        <div class="list">
+                        	<div class="unit unit0">
+                            	<a class="preview" href="#">
+                                	<img src="image/juji1.jpg" class="prevImg" />
+                                    <p class="maskA info">哥谭 第一季</p>
+                                </a>
+                            </div>
+                            <span class="clearfix"></span>
+                        </div>
+                        
+                        <div class="list">
+                        	<div class="unit unit0">
+                            	<a class="preview" href="#">
+                                	<img src="image/juji2.jpg" class="prevImg" />
+                                    <p class="maskA info">闪电侠 第二季</p>
+                                </a>
+                            </div>
+                            <span class="clearfix"></span>
+                        </div>
+                        
+                        <div class="list">
+                        	<div class="unit unit0">
+                            	<a class="preview" href="#">
+                                	<img src="image/juji3.jpg" class="prevImg" />
+                                    <p class="maskA info">我是僵尸 第二季</p>
+                                </a>
+                            </div>
+                            <span class="clearfix"></span>
+                        </div>
+                        
+                        <div class="list">
+                        	<div class="unit unit0">
+                            	<a class="preview" href="#">
+                                	<img src="image/juji4.jpg" class="prevImg" />
+                                    <p class="maskA info">朝5晚9 恋上我的帅和尚</p>
+                                </a>
+                            </div>
+                            <span class="clearfix"></span>
+                        </div>
+                        
+                        <div class="list ">
+                        	<div class="unit unit0">
+                            	<a class="preview" href="#">
+                                	<img src="image/juji5.jpg" class="prevImg" />
+                                    <p class="maskA info">神盾局特工</p>
+                                </a>
+                            </div>
+                            <span class="clearfix"></span>
+                        </div>
+                        
+                        <div class="list">
+                        	<div class="unit unit0">
+                            	<a class="preview" href="#">
+                                	<img src="image/juji6.jpg" class="prevImg" />
+                                    <p class="maskA info">女超人 第一季</p>
+                                </a>
+                            </div>
+                            <span class="clearfix"></span>
+                        </div>
+                                               
+                        <div class="list">
+                        	<div class="unit unit0">
+                            	<a class="preview" href="#">
+                                	<img src="image/juji7.jpg" class="prevImg" />
+                                    <p class="maskA info">荒原第一季</p>
+                                </a>
+                            </div>
+                            <span class="clearfix"></span>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="r">
+        	<div id="r-box" class="block">
+            	<div class="banner">
+					<a title="大家正在看" class="ch">
+                    	<h3>大家正在看</h3>
+                    </a>
+                </div>
+                <div class="mainer-r">
+                	<div class="unit">
+                    	<div class="l">
+                        	<a href="#" target="_blank" class="preview">
+                            	<img src="image/r3.jpg" class="prevImg" />
+                            </a>
+                        </div>
+                        <div class="r">
+                        	<a href="#" target="_blank" title="标题: 燃情主厨" class="title">燃情主厨</a>
+                            <p class="desc">米其林大厨的美食治愈之路</p>
+                        </div>
+                        <span class="clearfix"></span>
+                    </div>
+                    <div class="unit">
+                    	<div class="l">
+                        	<a href="#" target="_blank" class="preview">
+                            	<img src="image/r1.jpg" class="prevImg" />
+                            </a>
+                        </div>
+                        <div class="r">
+                        	<a href="#" target="_blank" title="标题 愤怒的律师" class="title">愤怒的律师</a>
+                            <p class="desc">律师暴走，真相只有一个</p>
+                        </div>
+                        <span class="clearfix"></span>
+                    </div>
+                    <div class="unit">
+                       	<div class="l">
+                        	<a href="#" target="_blank" class="preview">
+                            	<img src="image/r2.jpg" class="prevImg" />
+                            </a>
+                        </div>
+                        <div class="r">
+                        	<a href="#" target="_blank" title="标题 谴责" class="title">谴责</a>
+                            <p class="desc">下水道引发的血案</p>
+                        </div>
+                        <span class="clearfix"></span>
+                    </div>
+                    <div class="unit">
+                        <div class="l">
+                        	<a href="#" target="_blank" class="preview">
+                            	<img src="image/r4.jpg" class="prevImg" />
+                            </a>
+                        </div>
+                        <div class="r">
+                        	<a href="#" target="_blank" title="标题 辽阔天空" class="title">辽阔天空</a>
+                            <p class="desc">居然还有辽阔天空恐惧症！</p>
+                        </div>
+                        <span class="clearfix"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span class="clearfix"></span>
+    </div>
+    <div id="footer">
+    	<div id="footer-inner">
+        	<div id="footer-bot">
+                <a id="footer-logo" href="#"></a>
+                <p>本站不提供任何视听上传服务，所有内容均来自视频分享站点所提供的公开引用资源。</p>
+                <p>Copyright © 2007-2015 AcFun. 保留所有权利</p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
